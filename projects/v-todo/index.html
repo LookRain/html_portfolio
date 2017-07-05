@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+    <style type="text/css">
+    body {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .completed {
+        text-decoration: line-through;
+    }
+    </style>
+</head>
+
+<body>
+<section class="section">
+
+    <div id="root" class="container">
+        <tasks-app :list="tasks">
+        </tasks-app>
+    </div>
+
+</section>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="main.js">
+    </script>
+</body>
+
+</html>
