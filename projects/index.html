@@ -2,38 +2,108 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
-    <style type="text/css">
-    body {
-        padding-top: 40px;
-    }
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
+  <style type="text/css">
     .completed {
-        text-decoration: line-through;
+      text-decoration: line-through;
     }
-    </style>
+  </style>
 </head>
 
 <body>
-    <div class="columns">
-        <div class="column is-10 is-offset-1 has-text-centered">
-            <a href="http://projects.luyu.rocks/shy_the_kaiju/" target="_blank">
-                <div class="notification is-info">
-                    <p class="title is-4">Shy The Kaiju</p>
-                    <p class="subtitle is-6">A topdown 2D RPG game made in Unity3D</p>
-                </div>
-            </a>
-            <br>
-            <a href="http://projects.luyu.rocks/v-todo/" target="_blank">
-                <div class="notification is-warning">
-                    <p class="title is-4">V-Todo</p>
-                    <p class="subtitle is-6">a Todo app built using Vue.js</p>
-                </div>
-            </a>
+  <div id="app">
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Projects
+          </h1>
+          <h2 class="subtitle">
+
+          </h2>
         </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+
+
+        <div class="columns">
+
+          <project-card v-for="project in projects" :img="project.img" :p-title="project.title" :description="project.description" :p-link="project.link" :github="project.github"></project-card>
+          
+        </div>
+      </div>
     </div>
+
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+
+      <div class="columns">
+        
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+  <script>
+    Vue.component('project-card', {
+      template: `
+      <div class="column is-4">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img :src="img" alt="Image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">{{ pTitle }}</p>
+              </div>
+            </div>
+            <div class="content">
+              {{ description }}
+
+            </div>
+
+          </div>
+          <footer class="card-footer">
+            <a :href="pLink" target="_blank" class="card-footer-item">Link</a>
+            <a :href="github" target="_blank" class="card-footer-item">Github</a>
+          </footer>
+        </div>
+      </div>
+      `,
+      props: ['img', 'pTitle', 'description', 'pLink', 'github'],
+      data() {
+        return {
+
+        }
+      }
+    })
+    new Vue({
+      el: '#app',
+      data: {
+        projects: [
+        {
+          title: 'Shy The Kaiju',
+          description: 'A 2D top-down 8-bit style game made with Unity3D.',
+          link: 'http://projects.luyu.rocks/shy_the_kaiju/',
+          github: 'https://github.com/LookRain/Shy-The-Kaiju',
+          img: './images/kaiju.png'
+
+        }]
+      }
+    })
+
+  </script>
 </body>
 
 </html>
