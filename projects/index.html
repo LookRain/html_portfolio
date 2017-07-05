@@ -6,49 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
-  <style type="text/css">
-    /* styles for '...' */ 
-.block-with-text {
-  /* hide text if it more than N lines  */
-  overflow: hidden;
-  /* for set '...' in absolute position */
-  position: relative; 
-  /* use this value to count block height */
-  line-height: 1.2em;
-  /* max-height = line-height (1.2) * lines max number (3) */
-  max-height: 3.6em; 
-  /* fix problem when last visible word doesn't adjoin right side  */
-  text-align: justify;  
-  /* place for '...' */
-  margin-right: -1em;
-  padding-right: 1em;
-}
-/* create the ... */
-.block-with-text:before {
-  /* points in the end */
-  content: '...';
-  /* absolute position */
-  position: absolute;
-  /* set position to right bottom corner of block */
-  right: 0;
-  bottom: 0;
-}
-/* hide ... if we have text, which is less than or equal to max lines */
-.block-with-text:after {
-  /* points in the end */
-  content: '';
-  /* absolute position */
-  position: absolute;
-  /* set position to right bottom corner of text */
-  right: 0;
-  /* set width and height */
-  width: 1em;
-  height: 1em;
-  margin-top: 0.2em;
-  /* bg color = bg color under block */
-  background: white;
-}
-  </style>
+
 </head>
 
 <body>
@@ -65,35 +23,25 @@
         </div>
       </div>
     </section>
+
     <section class="section">
       <div class="container">
 
-
-        <div class="columns">
-
-          <project-card v-for="project in projects" :img="project.img" :p-title="project.title" :description="project.description" :p-link="project.link" :github="project.github"></project-card>
-
+        <div class="columns is-multiline">
+          <div class="column is-4" v-for="project in projects">
+            <project-card :img="project.img" :p-title="project.title" :description="project.description" :p-link="project.link" :github="project.github"></project-card>
+          </div>         
         </div>
       </div>
     </div>
 
   </div>
 
-  <section class="section">
-    <div class="container">
-
-
-      <div class="columns">
-
-      </div>
-    </div>
-  </section>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
   <script>
     Vue.component('project-card', {
       template: `
-      <div class="column is-4">
+
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
@@ -117,7 +65,7 @@
             <a :href="github" target="_blank" class="card-footer-item">Github</a>
           </footer>
         </div>
-      </div>
+      
       `,
       props: ['img', 'pTitle', 'description', 'pLink', 'github'],
       data() {
@@ -150,6 +98,13 @@
           link: 'https://github.com/LookRain/vue-admin-lte',
           github: 'https://github.com/LookRain/vue-admin-lte',
           img: './images/adminlte.png'
+        },
+        {
+          title: 'NUS Math Society',
+          description: 'NUS Math Society official website built using Bulma.css and Vue.js',
+          link: 'http://nusmathsoc.org/#/',
+          github: 'https://github.com/LookRain/nus_math_soc',
+          img: './images/nusmath.png'
         },
         ]
       }
