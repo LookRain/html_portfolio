@@ -7,9 +7,47 @@
   <title>Projects</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css">
   <style type="text/css">
-    .completed {
-      text-decoration: line-through;
-    }
+    /* styles for '...' */ 
+.block-with-text {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;  
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+}
+/* create the ... */
+.block-with-text:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: white;
+}
   </style>
 </head>
 
@@ -34,7 +72,7 @@
         <div class="columns">
 
           <project-card v-for="project in projects" :img="project.img" :p-title="project.title" :description="project.description" :p-link="project.link" :github="project.github"></project-card>
-          
+
         </div>
       </div>
     </div>
@@ -46,7 +84,7 @@
 
 
       <div class="columns">
-        
+
       </div>
     </div>
   </section>
@@ -68,7 +106,7 @@
                 <p class="title is-4">{{ pTitle }}</p>
               </div>
             </div>
-            <div class="content">
+            <div class="content" style="height: 8rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3;">
               {{ description }}
 
             </div>
@@ -98,8 +136,22 @@
           link: 'http://projects.luyu.rocks/shy_the_kaiju/',
           github: 'https://github.com/LookRain/Shy-The-Kaiju',
           img: './images/kaiju.png'
-
-        }]
+        },
+        {
+          title: 'PetSitter',
+          description: 'Web app built with Laravel. Book a pet care taking service from someone nearby or post your own pet related service on Petsitter.',
+          link: 'http://petsitter.luyu.rocks/',
+          github: 'https://github.com/LookRain/Petsitter',
+          img: './images/petsitter.png'
+        },
+        {
+          title: 'Vue AdminLTE',
+          description: 'AdminLTE re-structured using Vue.js',
+          link: 'https://github.com/LookRain/vue-admin-lte',
+          github: 'https://github.com/LookRain/vue-admin-lte',
+          img: './images/adminlte.png'
+        },
+        ]
       }
     })
 
